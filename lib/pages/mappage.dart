@@ -7,93 +7,6 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-
-// const LatLng SOURCE_LOCATION = LatLng(55.751776945, 37.6163721083);
-// const LatLng DEST_LOCATION = LatLng(55.751776980, 37.6163721183);
-// const double CAMERA_ZOOM = 16;
-// const double CAMERA_TILT = 80;
-// const double CAMERA_BEARING = 30;
-// // const double PIN_VISIBLE_POSITION = 20;
-// // const double PIN_INVISIBLE_POSITION = -220;
-
-// class Mappage extends StatefulWidget {
-//   // Mappage({Key key}) : super(key: key);
-//   Category selectedCategory;
-//   // Mappage({this.selectedCategory});
-//   @override
-//   _MappageState createState() => _MappageState();
-// }
-
-// class _MappageState extends State<Mappage> {
-//   LatLng currentLocation;
-//   LatLng destinationLocation;
-//   BitmapDescriptor sourceIcon;
-//   BitmapDescriptor destinationIcon;
-//   Set<Marker> _markers = Set<Marker>();
-//   // final Geolocator _geolocator = Geolocator()..forceAndroidLocationManager;
-//   Completer<GoogleMapController> _controller = Completer();
-
-//   @override
-//   void initState() {
-//     super.initState();
-
-//     this.setInitialLocation();
-//   }
-
-//   void setSourceAndDestinationMarkerIcons(BuildContext context) async {
-//     sourceIcon = await BitmapDescriptor.fromAssetImage(
-//         ImageConfiguration(devicePixelRatio: 2.0), '/assets/images/icon.png');
-
-//     destinationIcon = await BitmapDescriptor.fromAssetImage(
-//         ImageConfiguration(devicePixelRatio: 2.0), '/assets/images/icon2.png');
-//   }
-
-//   static final CameraPosition _moscow = CameraPosition(
-//     target: LatLng(55.781776936, 37.6163721084),
-//     zoom: 13,
-//   );
-
-//   void setInitialLocation() {
-//     currentLocation =
-//         LatLng(SOURCE_LOCATION.latitude, SOURCE_LOCATION.longitude);
-
-//     destinationLocation =
-//         LatLng(DEST_LOCATION.latitude, DEST_LOCATION.longitude);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     this.setSourceAndDestinationMarkerIcons(context);
-//     return Scaffold(
-//         body: Stack(children: [
-//       GoogleMap(
-//         mapType: MapType.normal,
-//         markers: _markers,
-//         initialCameraPosition: _moscow,
-//         myLocationButtonEnabled: true,
-//         onMapCreated: (GoogleMapController controller) {
-//           _controller.complete(controller);
-//           showPinsOnMap();
-//         },
-//       ),
-//       // Text(widget.selectedCategory.name)
-//     ]));
-//   }
-
-//   void showPinsOnMap() {
-//     setState(() {
-//       _markers.add(Marker(
-//           markerId: MarkerId('soursePin'),
-//           position: currentLocation,
-//           icon: sourceIcon));
-
-//       _markers.add(Marker(
-//           markerId: MarkerId('destinationPin'),
-//           position: destinationLocation,
-//           icon: destinationIcon));
-//     });
-//   }
-// }
 const LatLng CAMERA_LOCATION = LatLng(55.75272615341363, 37.65665291369295);
 const LatLng SOURCE_LOCATION = LatLng(55.75272615341363, 37.65665291369295);
 const LatLng DEST_LOCATION = LatLng(55.82875656783303, 37.69921625006431);
@@ -113,10 +26,8 @@ class _MapPageState extends State<MapPage> {
   BitmapDescriptor sourceIcon;
   BitmapDescriptor destinationIcon;
   Set<Marker> _markers = Set<Marker>();
-  // double pinPillPosition = PIN_VISIBLE_POSITION;
   LatLng currentLocation;
   LatLng destinationLocation;
-  // bool userBadgeSelected = false;
 
   Set<Polyline> _polylines = Set<Polyline>();
   List<LatLng> polylineCoordinates = [];
@@ -150,8 +61,6 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
-    // CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context, listen: false);
-    // widget.subCategory = catSelection.selectedSubCategory;
 
     this.setSourceAndDestinationMarkerIcons(context);
 
